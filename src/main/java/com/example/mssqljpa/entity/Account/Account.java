@@ -2,6 +2,7 @@ package com.example.mssqljpa.entity.Account;
 
 import com.example.mssqljpa.entity.AccountSettings;
 import jakarta.persistence.*;
+import org.hibernate.annotations.ManyToAny;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +18,7 @@ public class Account {
     @Column(nullable = false, length = 100)
     private String name;
 
-    @Column(name = "email_address")
-    private String emailAddress;
+    private String foo;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
     private List<AccountSettings> accountSettings = new ArrayList<>();
@@ -35,19 +35,19 @@ public class Account {
         this.name = name;
     }
 
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
-
     public List<AccountSettings> getAccountSettings() {
         return accountSettings;
     }
 
     public void setAccountSettings(List<AccountSettings> accountSettings) {
         this.accountSettings = accountSettings;
+    }
+
+    public String getFoo() {
+        return foo;
+    }
+
+    public void setFoo(String foo) {
+        this.foo = foo;
     }
 }
